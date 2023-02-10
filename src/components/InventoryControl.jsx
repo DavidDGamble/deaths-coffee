@@ -2,6 +2,7 @@ import React from "react";
 import ItemList from "./ItemList";
 import NewItemForm from "./NewItemForm";
 import ItemDetails from "./ItemDetails";
+import EditItemForm from "./EditItemForm";
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -41,14 +42,36 @@ class InventoryControl extends React.Component {
     this.setState({selectedItem: selectedItem});
   }
 
+  handleEditClick = () => {
+    this.setState({ editing: true });
+  }
+
+  handleEditingItemInList = (editedItem) => {
+    const editedMainInventoryList = this.state.mainInventoryList
+      .filter(item => item.id !== this.state.selectedItem.id)
+      .concat(editedItem);
+    this.setState({
+      mainInventoryList: editedMainInventoryList,
+      editing: false,
+      selectedItem: null
+    });
+  }
+
   render() {
     let currVisibleState = null;
     let buttonText = null;
 
-    if (this.state.selectedItem !== null) {
+    if (this.state.editing) {
+      currVisibleState =
+        <EditItemForm
+          item={this.state.selectedItem}
+          onEditItem={this.handleEditingItemInList} />
+      buttonText = "Return to Inventory List";
+    } else if (this.state.selectedItem !== null) {
       currVisibleState = 
         <ItemDetails
-          item={this.state.selectedItem} />
+          item={this.state.selectedItem} 
+          onClickingEdit={this.handleEditClick} />
       buttonText = "Return to Inventory List";
     } else if (this.state.formVisibleOnPage) {
       currVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
