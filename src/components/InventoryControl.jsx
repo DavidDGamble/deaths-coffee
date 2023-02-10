@@ -69,6 +69,15 @@ class InventoryControl extends React.Component {
     });
   }
 
+  handleDeletingItem = (id) => {
+    const newMainInventoryList = this.state.mainInventoryList.filter(item => item.id !== id);
+    this.setState({
+      mainInventoryList: newMainInventoryList,
+      selectedItem: null,
+      errorMessage: ""
+    });
+  }
+
   handleSellPound = (id) => {
     const currItem = this.state.mainInventoryList.filter(item => item.id === id)[0];
     
@@ -98,21 +107,19 @@ class InventoryControl extends React.Component {
     let errorMessage = this.state.errorMessage;
 
     if (this.state.editing) {
-      // errorMessage = "";
       currVisibleState =
         <EditItemForm
           item={this.state.selectedItem}
           onEditItem={this.handleEditingItemInList} />
       buttonText = "Return to Inventory List";
     } else if (this.state.selectedItem !== null) {
-      // errorMessage = "";
       currVisibleState = 
         <ItemDetails
           item={this.state.selectedItem} 
-          onClickingEdit={this.handleEditClick} />
+          onClickingEdit={this.handleEditClick}
+          onClickingDelete={this.handleDeletingItem} />
       buttonText = "Return to Inventory List";
     } else if (this.state.formVisibleOnPage) {
-      // errorMessage = "";
       currVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
       buttonText = "Return to Inventory List";
     } else {
