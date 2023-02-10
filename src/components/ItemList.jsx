@@ -12,7 +12,8 @@ function ItemList(props) {
           price={item.price}
           roast={item.roast}
           pounds={item.pounds}
-          id={item.id} />
+          id={item.id} 
+          key={item.id}/>
       )}
     </div>
   );

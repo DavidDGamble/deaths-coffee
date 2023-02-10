@@ -6,10 +6,10 @@ function Item(props) {
     <div className="item">
       <div className="details">
         <h2>{props.name}</h2>
-        <h6>Origin: {props.origin}</h6>
-        <h6>Price: {props.price}</h6>
-        <h6>Roast: {props.roast}</h6>
-        <h6><strong>Available lbs: {props.pounds}</strong></h6>
+        <h5>Origin: {props.origin}</h5>
+        <h5>Roast: {props.roast}</h5>
+        <h5>Price: ${props.price}/lb</h5>
+        <p><strong>Available: {props.pounds}lbs</strong></p>
       </div>
       <button id={props.id}>Sell Pound</button>
     </div>
@@ -19,8 +19,8 @@ function Item(props) {
 Item.propTypes = {
   name: PropTypes.string,
   origin: PropTypes.string,
-  price: PropTypes.string,
   roast: PropTypes.string,
+  price: PropTypes.string,
   pounds: PropTypes.string,
   id: PropTypes.string
 }
