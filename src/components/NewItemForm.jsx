@@ -11,7 +11,7 @@ function NewItemForm(props) {
       origin: event.target.origin.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
-      pounds: "130",
+      pounds: 130,
       id: v4()
     });
   }

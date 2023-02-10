@@ -8,10 +8,12 @@ class InventoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
       mainInventoryList: [],
+      poundsSold: 0,
+      formVisibleOnPage: false,
       selectedItem: null,
-      editing: false
+      editing: false,
+      errorMessage: ""
     };
   }
 
@@ -20,11 +22,13 @@ class InventoryControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedItem: null,
-        editing: false
+        editing: false,
+        errorMessage: ""
       });
     } else {
       this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+        errorMessage: ""
       }));
     }
   }
@@ -33,17 +37,24 @@ class InventoryControl extends React.Component {
     const newMainInventoryList = this.state.mainInventoryList.concat(newItem);
     this.setState({
       mainInventoryList: newMainInventoryList,
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      errorMessage: ""
     });
   }
 
   handleChangingSelectedItem = (id) => {
     const selectedItem = this.state.mainInventoryList.filter(item => item.id === id)[0];
-    this.setState({selectedItem: selectedItem});
+    this.setState({
+      selectedItem: selectedItem,
+      errorMessage: ""
+    });
   }
 
   handleEditClick = () => {
-    this.setState({ editing: true });
+    this.setState({ 
+      editing: true,
+      errorMessage: ""
+    });
   }
 
   handleEditingItemInList = (editedItem) => {
@@ -53,38 +64,69 @@ class InventoryControl extends React.Component {
     this.setState({
       mainInventoryList: editedMainInventoryList,
       editing: false,
-      selectedItem: null
+      selectedItem: null,
+      errorMessage: ""
     });
+  }
+
+  handleSellPound = (id) => {
+    const currItem = this.state.mainInventoryList.filter(item => item.id === id)[0];
+    
+    if (currItem.pounds === 0) {
+      this.setState({ errorMessage: `${currItem.name} is out of beans!`})
+    } else {
+      currItem.pounds -= 1
+  
+      const editedMainInventoryList = this.state.mainInventoryList
+        .filter(item => item.id !== id)
+        .concat(currItem);
+  
+      let currPoundsSold = this.state.poundsSold;
+      currPoundsSold++;
+  
+      this.setState({
+        mainInventoryList: editedMainInventoryList,
+        poundsSold: currPoundsSold,
+        errorMessage: ""
+      });
+    }
   }
 
   render() {
     let currVisibleState = null;
     let buttonText = null;
+    let errorMessage = this.state.errorMessage;
 
     if (this.state.editing) {
+      // errorMessage = "";
       currVisibleState =
         <EditItemForm
           item={this.state.selectedItem}
           onEditItem={this.handleEditingItemInList} />
       buttonText = "Return to Inventory List";
     } else if (this.state.selectedItem !== null) {
+      // errorMessage = "";
       currVisibleState = 
         <ItemDetails
           item={this.state.selectedItem} 
           onClickingEdit={this.handleEditClick} />
       buttonText = "Return to Inventory List";
     } else if (this.state.formVisibleOnPage) {
+      // errorMessage = "";
       currVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
       buttonText = "Return to Inventory List";
     } else {
       currVisibleState = <ItemList 
                             itemList={this.state.mainInventoryList}
-                            onItemSelection={this.handleChangingSelectedItem} />
+                            onItemSelection={this.handleChangingSelectedItem} 
+                            onSellPound={this.handleSellPound} />
       buttonText = "Add Item";
     }
 
     return (
       <React.Fragment>
+        <p>{this.state.poundsSold}lbs <strong>sold</strong></p>
+        <p><strong>{errorMessage}</strong></p>
         <button onClick={this.handleAddItem}>{buttonText}</button>
         {currVisibleState}
       </React.Fragment>

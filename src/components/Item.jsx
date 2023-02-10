@@ -11,7 +11,7 @@ function Item(props) {
         <h5>Price: ${props.price}/lb</h5>
         <p><strong>Available: {props.pounds}lbs</strong></p>
       </div>
-      <button id={props.id}>Sell Pound</button>
+      <button onClick={ () => props.whenSellPoundClicked(props.id) } id={props.id}>Sell Pound</button>
     </div>
   );
 }
@@ -21,9 +21,10 @@ Item.propTypes = {
   origin: PropTypes.string,
   roast: PropTypes.string,
   price: PropTypes.string,
-  pounds: PropTypes.string,
+  pounds: PropTypes.number,
   id: PropTypes.string,
-  whenItemClicked: PropTypes.func
+  whenItemClicked: PropTypes.func,
+  whenSellPoundClicked: PropTypes.func
 }
 
 export default Item;

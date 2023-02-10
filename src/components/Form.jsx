@@ -8,19 +8,19 @@ function Form(props) {
         <input
           type="text"
           name="name"
-          placeholder="Name" />
+          placeholder="Name" /><br/>
         <input
           type="text"
           name="origin"
-          placeholder="Origin" />
+          placeholder="Origin" /><br/>
           <input
             type="text"
             name="roast"
-            placeholder="Roast" />
+            placeholder="Roast" /><br/>
         <input
           type="text"
           name="price"
-          placeholder="Price" />
+          placeholder="Price" /><br/>
         <button type="submit">{props.buttonText}</button>
       </form>
     </div>

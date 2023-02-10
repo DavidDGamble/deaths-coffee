@@ -11,7 +11,7 @@ function EditItemForm(props) {
       origin: event.target.origin.value,
       roast: event.target.roast.value,
       price: event.target.price.value,
-      pounds: event.target.pounds.value,
+      pounds: parseInt(event.target.pounds.value),
       id: item.id
     });
   }
@@ -22,23 +22,23 @@ function EditItemForm(props) {
         <input
           type="text"
           name="name"
-          placeholder={item.name} />
+          placeholder={item.name} /><br/>
         <input
           type="text"
           name="origin"
-          placeholder={item.origin} />
+          placeholder={item.origin} /><br/>
           <input
             type="text"
             name="roast"
-            placeholder={item.roast} />
+            placeholder={item.roast} /><br/>
         <input
           type="text"
           name="price"
-          placeholder={item.price} />
+          placeholder={item.price} /><br/>
         <input
           type="text"
           name="pounds"
-          placeholder={item.pounds} />
+          placeholder={item.pounds} /><br/>
         <button type="submit">Edit Item</button>
       </form>
     </div>

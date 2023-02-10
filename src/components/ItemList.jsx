@@ -8,6 +8,7 @@ function ItemList(props) {
       {props.itemList.map((item) => 
         <Item 
           whenItemClicked={props.onItemSelection}
+          whenSellPoundClicked={props.onSellPound}
           name={item.name}
           origin={item.origin}
           price={item.price}
@@ -22,7 +23,8 @@ function ItemList(props) {
 
 ItemList.propTypes = {
   itemList: PropTypes.array,
-  onItemSelection: PropTypes.func
+  onItemSelection: PropTypes.func,
+  onSellPound: PropTypes.func
 };
 
 export default ItemList;
