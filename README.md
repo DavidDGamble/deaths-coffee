@@ -1,14 +1,10 @@
-# _Social Media Clone_
+# _Death's Coffee_
 
-#### By: _**David Gamble & Robert Bryan**_
+#### By: _**David Gamble**_
 
-#### _A React web app to demonstrate React basics._
-* _Use create-react-app command below to scaffold a React project:_
-```
-npx create-react-app [PROJECT NAME]
-```
+#### _A React web app Epicodus project that demonstates full CRUD functionality._
 
-![Diagram](https://github.com/DavidDGamble/social-media-clone/blob/main/src/images/Diagram.png)
+![Diagram](./src/images/deathsCoffeeLayout.png)
 
 ## Technologies Used
 
@@ -19,15 +15,15 @@ npx create-react-app [PROJECT NAME]
 
 ## Description
 
-_This is a web app that recreates a Twitter like main page using React._
+_This is a web app for Death's Coffee that allows a user to add, edit, and delete inventory of coffee.  The site will display all inventory items and allow the user to sell one pound of coffee at a time until the invetory reaches zero._
 
 ## Setup/Installation Requirements
 
 * _clone the repository to your desktop from:_
 ```
-https://github.com/DavidDGamble/social-media-clone.git
+https://github.com/DavidDGamble/deaths-coffee.git
 ```
-* _Enter the following commands in your terminal in the root repository social-media-clone_
+* _Enter the following commands in your terminal in the root repository deaths-coffee_
 ```
 npm i
 ```
@@ -44,7 +40,7 @@ npm run start
 
 ## License
 
-_Copyright (c) 2022 David Gamble & Robert Bryan_
+_Copyright (c) 2022 David Gamble_
 
 _Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:_
 
