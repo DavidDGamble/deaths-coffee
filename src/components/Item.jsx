@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Item(props) {
   return (
     <div className="item">
-      <div className="details">
+      <div className="details" onClick={ () => props.whenItemClicked(props.id) }>
         <h2>{props.name}</h2>
         <h5>Origin: {props.origin}</h5>
         <h5>Roast: {props.roast}</h5>
@@ -22,7 +22,8 @@ Item.propTypes = {
   roast: PropTypes.string,
   price: PropTypes.string,
   pounds: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  whenItemClicked: PropTypes.func
 }
 
 export default Item;

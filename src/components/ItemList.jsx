@@ -7,6 +7,7 @@ function ItemList(props) {
     <div className="item-list">
       {props.itemList.map((item) => 
         <Item 
+          whenItemClicked={props.onItemSelection}
           name={item.name}
           origin={item.origin}
           price={item.price}
@@ -20,7 +21,8 @@ function ItemList(props) {
 }
 
 ItemList.propTypes = {
-  itemList: PropTypes.array
+  itemList: PropTypes.array,
+  onItemSelection: PropTypes.func
 };
 
 export default ItemList;

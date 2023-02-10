@@ -1,7 +1,7 @@
 import React from "react";
-import Item from "./Item";
 import ItemList from "./ItemList";
 import NewItemForm from "./NewItemForm";
+import ItemDetails from "./ItemDetails";
 
 class InventoryControl extends React.Component {
   constructor(props) {
@@ -36,16 +36,27 @@ class InventoryControl extends React.Component {
     });
   }
 
+  handleChangingSelectedItem = (id) => {
+    const selectedItem = this.state.mainInventoryList.filter(item => item.id === id)[0];
+    this.setState({selectedItem: selectedItem});
+  }
+
   render() {
     let currVisibleState = null;
     let buttonText = null;
 
-    if (this.state.formVisibleOnPage) {
+    if (this.state.selectedItem !== null) {
+      currVisibleState = 
+        <ItemDetails
+          item={this.state.selectedItem} />
+      buttonText = "Return to Inventory List";
+    } else if (this.state.formVisibleOnPage) {
       currVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
       buttonText = "Return to Inventory List";
     } else {
       currVisibleState = <ItemList 
-                            itemList={this.state.mainInventoryList} />
+                            itemList={this.state.mainInventoryList}
+                            onItemSelection={this.handleChangingSelectedItem} />
       buttonText = "Add Item";
     }
 
