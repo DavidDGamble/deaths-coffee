@@ -132,10 +132,16 @@ class InventoryControl extends React.Component {
 
     return (
       <React.Fragment>
-        <p>{this.state.poundsSold}lbs <strong>sold</strong></p>
-        <p><strong>{errorMessage}</strong></p>
-        <button onClick={this.handleAddItem}>{buttonText}</button>
-        {currVisibleState}
+        <div className="main-page">
+          <div className="side-bar">
+            <p>{this.state.poundsSold}lbs <strong>sold</strong></p>
+            <p id="error"><strong>{errorMessage}</strong></p>
+            <button onClick={this.handleAddItem}>{buttonText}</button>
+          </div>
+          <div className="main-column">
+            {currVisibleState}
+          </div>
+        </div>
       </React.Fragment>
     );
   }

@@ -5,6 +5,7 @@ function Form(props) {
   return (
     <div className="form">
       <form onSubmit={props.formSubmissionHandler}>
+        <h3>Enter Item Information</h3>
         <input
           type="text"
           name="name"

@@ -1,0 +1,23 @@
+.item-details {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  height: auto;
+  border: solid 3px gold;
+  border-radius: 1rem;
+  background-color: darkgrey;
+  padding-bottom: 3%;
+}
+
+#edit {
+  background-color: yellow;
+  font-weight: bolder;
+  border-radius: .25rem;
+  margin-right: 5%;
+}
+
+#delete {
+  background-color: red;
+  font-weight: bolder;
+  border-radius: .25rem;
+}

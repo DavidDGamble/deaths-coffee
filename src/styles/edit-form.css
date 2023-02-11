@@ -1,0 +1,22 @@
+.edit-form {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  height: auto;
+  border: solid 3px gold;
+  border-radius: 1rem;
+  background-color: darkgrey;
+  padding-bottom: 3%;
+}
+
+.edit-form > form > input {
+  margin-top: 1%;
+  width: 25%;
+}
+
+.edit-form > form > button {
+  background-color: yellow;
+  font-weight: bolder;
+  border-radius: .25rem;
+  margin-top: 3%;
+}

@@ -13,8 +13,8 @@ function ItemDetails(props) {
         <h5>Price: ${item.price}/lb</h5>
         <p><strong>Available: {item.pounds}lbs</strong></p>
       </div>
-      <button onClick={ props.onClickingEdit }>Edit Item</button>
-      <button onClick={ () => onClickingDelete(item.id) }>Delete Item</button>
+      <button onClick={ props.onClickingEdit } id="edit">Edit Item</button>
+      <button onClick={ () => onClickingDelete(item.id) } id="delete">Delete Item</button>
     </div>
   );
 }

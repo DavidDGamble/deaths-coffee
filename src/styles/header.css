@@ -1,0 +1,8 @@
+.header {
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  height: 10vh;
+  border: solid 3px gold;
+  background-color: darkgrey;
+}

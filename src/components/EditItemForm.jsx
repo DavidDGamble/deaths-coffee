@@ -19,6 +19,7 @@ function EditItemForm(props) {
   return (
     <div className="edit-form">
       <form onSubmit={handleEditItemFormSubmission}>
+        <h3>Edit Item Information</h3>
         <input
           type="text"
           name="name"
